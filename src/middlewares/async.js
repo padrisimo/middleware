@@ -4,6 +4,10 @@ export default function({ dispatch }){
             return next(action);
         }
 
-        console.log('we dont have a promise', action);
+        action.payload
+            .then(response =>{
+                const newAction = { ...action, payload: response };
+                dispatch(newAction);
+            });
     }
 }
