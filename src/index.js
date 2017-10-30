@@ -6,8 +6,9 @@ import { logger } from 'redux-logger';
 
 import App from './components/app';
 import reducers from './reducers';
+import Async from './middlewares/async';
 
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
+const createStoreWithMiddleware = applyMiddleware(Async, logger)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
